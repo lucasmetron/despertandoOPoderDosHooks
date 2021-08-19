@@ -7,16 +7,32 @@ function Counter(props) {
   const defaultRef = createRef();
   const hookRef = useRef();
 
-
   useEffect(() => {
-    console.log('EFFECT')
-    console.log('default', defaultRef)
-    console.log('hook', hookRef)
+    setInterval(() => {
+      setValor(v => v + 1)
+      console.log(valor)
+    }, 1000)
 
   }, [])
 
-  console.log('default', defaultRef)
-  console.log('hook', hookRef)
+  useEffect(() => {
+    console.log(valor)
+  }, [valor])
+
+
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     setValor(valor + 1)
+
+  //   }, 1000)
+
+  // }, [])
+
+  // useEffect(() => {
+  //   console.log(valor)
+  // }, [valor])
+
+
 
   return (
     <>
