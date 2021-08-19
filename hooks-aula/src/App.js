@@ -1,18 +1,28 @@
-import React, { useState, useEffect, createRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css';
 
 function Counter(props) {
   const [valor, setValor] = useState(0);
-  const button = createRef();
+  const [title, setTitle] = useState('');
 
-  console.log(1, button)
+
+
   useEffect(() => {
-    console.log(3, button)
-  })
-  console.log(2, button)
+    console.log(3)
+    document.title = title
+  }, [title])
 
 
-  return <button ref={button} onClick={() => setValor(valor + 1)}> {`Valor: ${valor}`}</button >
+
+  return (
+    <>
+      <input type="text" value={title} onChange={(event) => setTitle(event.target.value)} />
+      <button onClick={() => setValor(valor + 1)}> {`Valor: ${valor}`}</button >
+    </>
+  );
+
+
+
 }
 
 function App() {
