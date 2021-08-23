@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { themes, ThemeContext } from '../data/ThemeProvider';
+import { ThemeContext } from '../data/ThemeProvider';
 
 export default function Teste() {
 
