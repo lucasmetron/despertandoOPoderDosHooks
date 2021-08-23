@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css';
 import ThemeProvider from './data/ThemeProvider';
+import Lista from './ui/Lista';
 import Teste from './ui/Teste';
 
 function App() {
@@ -9,8 +10,8 @@ function App() {
 
   return (
     <ThemeProvider >
-      <div className='App'>
-        <Teste></Teste>
+      <div>
+        <Lista />
       </div>
     </ThemeProvider>
   );
