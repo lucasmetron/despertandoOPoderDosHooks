@@ -1,39 +1,23 @@
-import React, { useState, useEffect, useRef, createRef } from 'react'
+import React, { useState } from 'react'
 import './App.css';
-
-function Counter(props) {
-  const [valor, setValor] = useState(0);
-  const valorRef = useRef(0);
-  const [title, setTitle] = useState('');
-
-
-  useEffect(() => {
-    setInterval(() => {
-      console.log(valor)
-      console.log(valorRef)
-    }, 1000)
-
-  }, [])
-
-  useEffect(() => {
-
-    valorRef.current = valor
-
-  }, [valor])
-
-  return (
-    <>
-      <input type="text" value={title} onChange={(event) => setTitle(event.target.value)} />
-      <button onClick={() => setValor(valor + 1)}> {`Valor: ${valor}`}</button >
-    </>
-  );
-
-}
+import { themes, ThemeContext } from './data/ThemeProvider';
+import Teste from './ui/Teste';
 
 function App() {
 
+  const [val, setVal] = useState(themes.light);
+
+  function toggle() {
+    setVal(val === themes.light ? themes.dark : themes.light)
+  }
+
   return (
-    <Counter />
+    <ThemeContext.Provider value={{ value: val, toggle }}>
+      <div className='App'>
+        <button onClick={toggle}>{val}</button>
+      </div>
+      <Teste></Teste>
+    </ThemeContext.Provider>
   );
 }
 
