@@ -10,9 +10,8 @@ function App() {
   return (
     <ThemeProvider >
       <div className='App'>
-
+        <Teste></Teste>
       </div>
-      <Teste></Teste>
     </ThemeProvider>
   );
 }
