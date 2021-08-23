@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
+import { myState, MyReducer } from './ListaReducer';
+
 
 export default function Lista(props) {
 
-    const [list, setList] = useState([]);
+    const [list, setList] = useReducer(MyReducer, myState);
+
 
     function add() {
-        const newItem = { id: Date.now() }
-        const newList = [...list, newItem]
-        setList(newList)
+        setList({ type: 'ADD' })
     }
 
     function remove(id) {
-        const newList = list.filter(item => item.id !== id)
-        setList(newList)
+        setList({ type: 'REMOVE', payload: id })
     }
 
     function update(newItem) {
-        const newList = list.map(item => (item.id != newItem.id ? item : newItem))
-        setList(newList)
+        setList({ type: 'UPDATE', payload: newItem })
     }
 
     return (
