@@ -3,7 +3,7 @@ export const myState = [];
 export function MyReducer(state, action) {
     switch (action.type) {
         case 'ADD':
-            return [...state, { id: Date.now() }];
+            return [...state, { id: Date.now() }]; //add numero aleatório
         case 'REMOVE':
             return state.filter(item => item.id !== action.payload);
         case 'UPDATE':
