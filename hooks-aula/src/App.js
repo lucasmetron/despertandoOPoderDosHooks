@@ -1,18 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react'
-import useOnScreen from './data/hooks/useOnScreen';
+import useKeyPress from './data/hooks/useKeyPress';
 
 function App() {
-  const imageRef = useRef();
-  const isImageVisible = useOnScreen(imageRef)
+
+  const keyA = useKeyPress('a')
+  const keyB = useKeyPress('b')
 
   return (
     <div>
-      <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br />
-      <img ref={imageRef} src={isImageVisible ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" : ""} />
+      {keyA && "A"} {/* se keyA for true ele mostra 'A' */}
+      {keyB && "B"}
     </div>
   );
-}
 
-//na tag img foi colocado uma condição para só passar o src da imagem quando ela estiver visivel
+}
 
 export default App;
