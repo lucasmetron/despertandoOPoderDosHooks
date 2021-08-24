@@ -1,17 +1,13 @@
 import React from 'react'
-import './App.css';
-import ThemeProvider from './data/ThemeProvider';
-import ExepmloUseCallback from './components/ExepmloUseCallback';
+import { useOnlineStatus } from './data/hooks/useOnlineStatus';
+
 function App() {
-
-
+  const isOnline = useOnlineStatus();
 
   return (
-    <ThemeProvider >
-      <div>
-        <ExepmloUseCallback />
-      </div>
-    </ThemeProvider>
+    <div>
+      {isOnline ? 'conectado' : 'desconectado'}
+    </div>
   );
 }
 
