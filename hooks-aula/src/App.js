@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
-import useUndo from './data/hooks/useUndo';
+import React, { useEffect, useState } from 'react'
+import useDebounce from './data/hooks/useDebounce';
 
 function App() {
-  const [counter, setCounter] = useState(0);
-  const valorAnterior = useUndo(counter);
+  const [text, setText] = useState('');
+  const myText = useDebounce(text, 1000)
+
+  useEffect(() => {
+    console.log(text)
+  }, [text])
 
   return (
     <div>
-      <button onClick={() => setCounter(counter + 1)}>{counter}</button>
-      <h1>Valor anterior {valorAnterior}</h1>
+      <input type="text" value={text} onChange={event => setText(event.target.value)} />
+      <br />
+      <h1>{myText}</h1>
     </div>
   );
 }
