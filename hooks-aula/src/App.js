@@ -1,16 +1,14 @@
-import React from 'react'
-import { useOnlineStatus } from './data/hooks/useOnlineStatus';
-import useLocalStorage from './data/hooks/useLocalStorage';
+import React, { useState } from 'react'
+import useUndo from './data/hooks/useUndo';
 
 function App() {
-  const isOnline = useOnlineStatus();
-  const [counter, setCounter] = useLocalStorage('counter', 1);
+  const [counter, setCounter] = useState(0);
+  const valorAnterior = useUndo(counter);
 
   return (
     <div>
-      {isOnline ? 'conectado' : 'desconectado'}
-
       <button onClick={() => setCounter(counter + 1)}>{counter}</button>
+      <h1>Valor anterior {valorAnterior}</h1>
     </div>
   );
 }
