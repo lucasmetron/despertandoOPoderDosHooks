@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import useDebounce from './data/hooks/useDebounce';
+import React, { useEffect, useRef, useState } from 'react'
+import useOnScreen from './data/hooks/useOnScreen';
 
 function App() {
-  const [text, setText] = useState('');
-  const myText = useDebounce(text, 1000)
-
-  useEffect(() => {
-    console.log(text)
-  }, [text])
+  const imageRef = useRef();
+  const isImageVisible = useOnScreen(imageRef)
 
   return (
     <div>
-      <input type="text" value={text} onChange={event => setText(event.target.value)} />
-      <br />
-      <h1>{myText}</h1>
+      <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br />
+      <img ref={imageRef} src={isImageVisible ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" : ""} />
     </div>
   );
 }
+
+//na tag img foi colocado uma condição para só passar o src da imagem quando ela estiver visivel
 
 export default App;
